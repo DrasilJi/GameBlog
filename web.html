@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web前端学习</title>
+     <!-- Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- font-awesome -->
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <style>
+       article p {
+         font-size: large;
+       }
+       article li{
+         font-size: large;
+       }
+     </style>
+</head>
+<body>
+      <!-- 响应式导航栏 -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <!-- 添加响应式 -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Drasil的游戏开发日记</a>
+            <img src="img/头像.jpg" alt="avator" width="50" height="50">
+          </div>
+      
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+      <main class="container-fluid">
+          <article class="row">
+            <div class="col-md-offset-1 col-md-8">
+              <h1 class="page-header">网页基本组成</h1>
+
+            <p>网页的外观多种多样，但是除了全屏视频或游戏，或艺术作品页面，或只是结构不当的页面以外，都倾向于使用类似的标准组件<br/><img style="height: 60%;width: 60%;" alt="简易网站示意" src="https://mdn.mozillademos.org/files/16497/snapshot.png"/></p>
+            
+            <h3>页眉<code>&lt;header&gt;</code></h3>
+            
+            <p>通常横跨于整个页面顶部有一个大标题 和/或 一个标志。 这是网站的主要一般信息，通常存在于所有网页。</p>
+            
+            <h3>导航栏<code>&lt;nav&gt;</code></h3>
+            
+            <p>指向网站各个主要区段的超链接。通常用菜单按钮、链接或标签页表示。类似于标题栏，导航栏通常应在所有网页之间保持一致，否则会让用户感到疑惑，甚至无所适从。许多 web 设计人员认为导航栏是标题栏的一部分，而不是独立的组件，但这并非绝对；还有人认为，两者独立可以提供更好的 无障碍访问特性，因为屏幕阅读器可以更清晰地分辨二者。</p>
+            
+            <h3>主内容<code>&lt;main&gt;</code></h3>
+            
+            <p>中心的大部分区域是当前网页大多数的独有内容，例如视频、文章、地图、新闻等。这些内容是网站的一部分，且会因页面而异。</p>
+            
+            <h3>侧边栏<code>&lt;aside&gt;</code></h3>
+            
+            <p>一些外围信息、链接、引用、广告等。通常与主内容相关（例如一个新闻页面上，侧边栏可能包含作者信息或相关文章链接），还可能存在其他的重复元素，如辅助导航系统。</p>
+            
+            <h3>页脚<code>&lt;footer&gt;</code></h3>
+            
+            <p>横跨页面底部的狭长区域。和标题一样，页脚是放置公共信息（比如版权声明或联系方式）的，一般使用较小字体，且通常为次要内容。 还可以通过提供快速访问链接来进行 SEO。</p>
+            
+            <h2>HTML相关标签</h2>
+            
+            <ul><li><code>&lt;main&gt;</code>存放每个页面独有的内容。每个页面上只能用一次 <code>&lt;main&gt;</code>，且直接位于 <code>&lt;body&gt;</code> 中。最好不要把它嵌套进其它元素。</li><li><code>&lt;article&gt;</code> 包围的内容即一篇文章，与页面其它部分无关（比如一篇博文）。</li><li><code>&lt;section&gt;</code> 与 <code>&lt;article&gt;</code> 类似，但 <code>&lt;section&gt;</code> 更适用于组织页面使其按功能（比如迷你地图、一组文章标题和摘要）分块。一般的最佳用法是：以 标题 作为开头；也可以把一篇 <code>&lt;article&gt;</code> 分成若干部分并分别置于不同的 <code>&lt;section&gt;</code> 中，也可以把一个区段 <code>&lt;section&gt;</code> 分成若干部分并分别置于不同的 <code>&lt;article&gt;</code> 中，取决于上下文。</li><li><code>&lt;aside&gt;</code> 包含一些间接信息（术语条目、作者简介、相关链接，等等）。</li><li><code>&lt;header&gt;</code> 是简介形式的内容。如果它是 <code>&lt;body&gt;</code> 的子元素，那么就是网站的全局页眉。如果它是 <code>&lt;article&gt;</code> 或<code>&lt;section&gt;</code> 的子元素，那么它是这些部分特有的页眉（此 <code>&lt;header&gt;</code> 非彼 标题）</li><li><code>&lt;nav&gt;</code> 包含页面主导航功能。其中不应包含二级链接等内容。</li><li><code>&lt;footer&gt;</code> 包含了页面的页脚部分。</li><li><code>&lt;span&gt;</code>内联的无语义元素</li><li><code>&lt;div&gt;</code>块级无语义元素 <code>&lt;div&gt;</code> 非常便利但容易被滥用。由于它们没有语义值，会使 HTML 代码变得混乱。要小心使用，只有在没有更好的语义方案时才选择它，而且要尽可能少用， 否则文档的升级和维护工作会非常困难。</li></ul>
+            
+            <h2>如何规划一个简单的网站</h2>
+            
+            <ol>
+              <li>时刻记住，大多数（不是全部）页面会使用一些相同的元素，例如导航菜单以及页脚内容。若网站为商业站点，不妨在所有页面的页脚都加上联系方式。请记录这些对所有页面都通用的内容：<br>
+            <img alt="1" src="https://mdn.mozillademos.org/files/16508/%E9%80%9A%E7%94%A8%E5%86%85%E5%AE%B9.gif"/></li>
+            <li>接下来，可为页面结构绘制草图（这里与前文那个站点页面的截图类似）。记录每一块的作用：<br>
+            <img alt="2" src="https://mdn.mozillademos.org/files/16509/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80.gif"/></li>
+            <li>下面，对于期望添加进站点的所有其它（通用内容以外的）内容展开头脑风暴，直接罗列出来。<br> <img alt="3" src="https://mdn.mozillademos.org/files/16522/%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8.gif"/></li>
+            <li>下一步，试着对这些内容进行分组，这样可以让你了解哪些内容可以放在同一个页面。这种做法和 卡片分类法 非常相似。<br><img alt="4" src="https://mdn.mozillademos.org/files/16521/%E5%8A%9F%E8%83%BD%E5%88%86%E7%B1%BB.gif"/></li>
+            <li>接下来，试着绘制一个站点地图的草图，使用一个气泡代表网站的一个页面，并绘制连线来表示页面间的一般工作流。主页面一般置于中心，且链接到其他大多数页面；小型网站的大多数页面都可以从主页的导航栏中链接跳转。也可记录下内容的显示方式。<br><img alt="5" src="https://mdn.mozillademos.org/files/16523/%E7%AB%99%E7%82%B9%E5%9C%B0%E5%9B%BE.gif"/></li>
+          </ol>
+            
+            <h3>HTML调试</h3>
+            <a href="https://validator.w3.org/">Markup Validation Service</a>
+            
+            </div>
+            
+          </article>
+          <footer class="container">
+            <h3>参考网址</h3>
+            <dl>
+              <dt>
+                <a href="https://developer.mozilla.org/zh-CN/">MDN文档</a>
+              </dt>
+            </dl>
+            <p><strong>此网站版权归Drasil所有</strong></p>
+          </footer>
+      </main>
+ <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+ <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+ <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
