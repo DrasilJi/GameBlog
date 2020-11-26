@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsTable</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script src="js/jstable.js"></script> -->
+</head>
+<body>
+    <div id="task">
+        <table>
+        <thead>
+            <tr>
+                <th>栏目一</th>
+                <th>栏目二</th>
+                <th>栏目三</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tasktb">
+            <tr class="tasktr">
+                <td>栏目一数据1</td>
+                <td>栏目二数据1</td>
+                <td>栏目三数据1</td>
+                <td>
+                    <button type="button" onclick="delLine(this)">删除</button>
+                    <!-- <a href="#" class="remove">删除</a> -->
+                </td>
+            </tr>
+            <tr class="tasktr">
+                <td>栏目一数据2</td>
+                <td>栏目二数据2</td>
+                <td>栏目三数据2</td>
+                <td>
+                    <button type="button" onclick="delLine(this)">删除</button>
+                    <!-- <a href="#" class="remove">删除</a> -->
+                </td>
+            </tr>        
+        </tbody>
+    </table>
+</div>
+<button type="button" onclick="addLine()">增加一行</button>
+    <!-- <a href="#" id="add" onclick="addLine()">增加一行</a> -->
+    <script>
+        var newtr= document.getElementsByClassName("tasktr")[0].cloneNode(true);
+    function addLine()
+        {
+            document.getElementById("tasktb").appendChild(newtr);
+            document.getElementById().appendChild("")
+        }
+        function delLine(node)
+        {
+            var parent=node.parentNode.parentNode;
+            parent.parentNode.removeChild(parent);
+        }
+        // function modifyLine(node)
+        // {
+        //     var parent=node.parentNode.parentNode;
+        //     var tds=parent.childNode;
+        //     for(var i=0;i<tds.length;i++)
+        //     {
+        //         tds[i].appendChild(document.createElement("input")
+        //     }
+        // }
+        </script>
+</body>
+</html>
