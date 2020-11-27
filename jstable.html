@@ -19,50 +19,73 @@
             </tr>
         </thead>
         <tbody id="tasktb">
-            <tr class="tasktr">
-                <td>栏目一数据1</td>
-                <td>栏目二数据1</td>
-                <td>栏目三数据1</td>
+            <tr id="tasktr">
+                <td onclick='ChangeCell(this);'>栏目一数据1</td>
+                <td onclick='ChangeCell(this);'>栏目二数据1</td>
+                <td onclick='ChangeCell(this);'>栏目三数据1</td>
                 <td>
                     <button type="button" onclick="delLine(this)">删除</button>
                     <!-- <a href="#" class="remove">删除</a> -->
                 </td>
             </tr>
-            <tr class="tasktr">
-                <td>栏目一数据2</td>
-                <td>栏目二数据2</td>
-                <td>栏目三数据2</td>
+            <tr>
+                <td onclick='ChangeCell(this);'>栏目一数据2</td>
+                <td onclick='ChangeCell(this);'>栏目二数据2</td>
+                <td onclick='ChangeCell(this);'>栏目三数据2</td>
                 <td>
                     <button type="button" onclick="delLine(this)">删除</button>
-                    <!-- <a href="#" class="remove">删除</a> -->
                 </td>
             </tr>        
         </tbody>
     </table>
 </div>
 <button type="button" onclick="addLine()">增加一行</button>
-    <!-- <a href="#" id="add" onclick="addLine()">增加一行</a> -->
     <script>
-        var newtr= document.getElementsByClassName("tasktr")[0].cloneNode(true);
-    function addLine()
+        
+        var flag=false;//是否有单元格正被修改
+
+        function addLine()
         {
+            var newtr= document.getElementsByTagName("tr")[1].cloneNode(true);
             document.getElementById("tasktb").appendChild(newtr);
-            document.getElementById().appendChild("")
         }
+
         function delLine(node)
         {
             var parent=node.parentNode.parentNode;
             parent.parentNode.removeChild(parent);
         }
-        // function modifyLine(node)
-        // {
-        //     var parent=node.parentNode.parentNode;
-        //     var tds=parent.childNode;
-        //     for(var i=0;i<tds.length;i++)
-        //     {
-        //         tds[i].appendChild(document.createElement("input")
-        //     }
-        // }
-        </script>
+        
+        //改变标签类型为<input>
+        function ChangeCell(o){
+            if(!flag)
+            {
+                flag=true;
+                $(o).replaceWith("<input type='text' class='current' onblur='UpdateCell(event);'>");//失去焦点时执行函数updateCell
+                $("input.current").focus();
+            }
+        }
+
+        //修改标签类型为<td>并且将input中的值赋给该标签的text
+        //todo: 当键盘输入回车时，完成当前输入
+        function UpdateCell(event){
+            var o = event.target;
+            var elem = $(o);
+            var temp = elem.val();//得到文本框输入的内容
+            var info = '';
+            if(temp && temp != "" ){
+                flag=false;//有内容才能修改别的文本框
+                elem.replaceWith("<td onclick='ChangeCell(this);'>" + temp + "</td>");
+            }else{
+                //alert("字段不得为空！");
+                //event.preventDefault();
+                //event.stopPropagation
+                elem.focus();
+                info = '字段不得为空！';
+            }
+            $('.info').text(info);
+            
+        }
+         </script>
 </body>
 </html>
