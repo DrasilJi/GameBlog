@@ -139,10 +139,10 @@
         <div class="jumbotron">
           <div class="container">
               <h1 id="welcomeHeader">欢迎进入我的主页！</h1>
-              <!-- <form>
+              <form>
                 <input type="text" name="userName" id="setCookie">
-                <button type="submit" class="btn btn-default">登录</button>
-              </form> -->
+                <button type="submit" class="btn btn-default" onclick="checkCookie()">登录</button>
+              </form>
               <p><a class="btn btn-primary btn-lg" role="button">
                学习更多</a>
               </p>
@@ -357,10 +357,12 @@
       function checkCookie(){
           var user=getCookie("username");
           if (user!=""){
-              alert("欢迎 " + user + " 再次访问");
+              // alert("欢迎 " + user + " 再次访问");
+              document.getElementById("welcomeHeader").innerHTML="欢迎"+user.toString()+"!";
           }
           else {
-              user = prompt("请输入你的名字:","");
+            user=document.getElementById("setCookie").value;
+              // user = prompt("请输入你的名字:","");
                 if (user!="" && user!=null){
                   setCookie("username",user,30);
                   document.getElementById("welcomeHeader").innerHTML="欢迎"+user.toString()+"!";
