@@ -23,7 +23,7 @@
     </style>
     
   </head>
-  <body id="mybody" onload="checkCookie()">
+  <body id="mybody" onload="">
       <!-- 响应式导航栏 -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -361,10 +361,12 @@
               document.getElementById("welcomeHeader").innerHTML="欢迎"+user.toString()+"!";
           }
           else {
-            user=document.getElementById("setCookie").value;
+            var loginField=document.getElementById("setCookie");
+            user=loginField.value;
               // user = prompt("请输入你的名字:","");
                 if (user!="" && user!=null){
                   setCookie("username",user,30);
+                  $("#setCookie").css('display','none');
                   document.getElementById("welcomeHeader").innerHTML="欢迎"+user.toString()+"!";
               }
           }
