@@ -1,375 +1,194 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drasil游戏开发日记</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- normalize.css -->
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <!-- mycss-->
+    <link rel="stylesheet" href="css/mycss.css">
     <!-- font-awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/demo.css">
-    <style>
-      footer{
-        background-color: azure;
-        
-      }
-      
-    
-    
-    </style>
-    
-  </head>
-  <body id="mybody" onload="checkCookie()">
-      <!-- 响应式导航栏 -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-              <!-- 添加响应式 -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Drasil的游戏开发日记</a>
-            <img src="img/头像.jpg" alt="avator" width="50" height="50">
-          </div>
-      
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="jstable.html">实训任务 <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
+    <!-- Jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 水平导航栏 -->
+    <div id="navcont"> 
+        <nav> 
+            <ul>
+            <li class="borderleft"><a href="https://drasilji.github.io/GameBlog/" target="_blank"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Drasil的游戏开发日记</a></li>
+            <li><a href="#game"><i class="fa fa-gamepad fa-fw" aria-hidden="true"></i>游戏Demo</a>
+                <ul>
+                <li class="top"><a href="">下山</a></li>
+                <li><a href="">Dungeon</a></li>
+                <li><a href="">SunnyLand</a></li>
+                
                 </ul>
-              </li>
-            </ul>
-            <form class="navbar-form navbar-left" onsubmit="return clientCheck();">
-              <div class="form-group">
-                <input type="text" id="mysearch" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-              <button type="button" class="btn btn-default" onclick="changeTheme()">Change Theme</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a id="timeClock" href="http://www.beijing-time.org" target="_blank">Link</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+            </li> 
+            <li><a href="#learn"><i class="fa fa-book fa-fw" aria-hidden="true"></i>学习笔记</a>
+                <ul>
+                    <li class="top"><a href="bootstrap.html" target="_blank">Bootstrap</a></li>
+                    <li><a href="web.html" target="_blank">Web前端</a></li>
+                    <li><a href="" target="_blank">Unity</a></li>
                 </ul>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-
-      <div id="wrapper">
-        <div class="overlay"></div>
-    
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                       Bootstrap 3
-                    </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
-                </li>
+            </li>
+            <li><a href="#Tool"><i class="fa fa-cog fa-spin fa-fw"></i></i>自制项目</a>
+                <ul>
+                    <li class="top"><a href="markdown实时预览.html" target="_blank">Markdown实时预览</a></li>
+                    <li><a href="game.html" target="_blank">俄罗斯方块</a></li>
+                </ul>
+            </li>
+            <li><a href="" target="_blank"><i class="fa fa-address-card fa-fw" aria-hidden="true"></i>关于我</a>
+                <ul>
+                    <li class="top" id="avator"><a href="introduction.html" target="_blank">Drasil</a></li>
+                    <li><a href="introduction.html" target="_blank"><i class="fa fa-weixin fa-fw" aria-hidden="true"></i>mason_Ji0706</a></li>
+                    <li><a href="introduction.html" target="_blank"><i class="fa fa-qq fa-fw" aria-hidden="true"></i>1016365768</a></li>
+                </ul>
+            </li>
             </ul>
         </nav>
-        <!-- /#sidebar-wrapper -->
-        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
-          </button>
     </div>
-    
-      <header class="container-fluid">
-        <div class="jumbotron">
-          <div class="container">
-              <h1 id="welcomeHeader">欢迎进入我的主页！</h1>
-              <form>
-                <input type="text" name="userName" id="setCookie">
-                <button type="submit" class="btn btn-default" onclick="checkCookie()">登录</button>
-              </form>
-              <p><a class="btn btn-primary btn-lg" role="button">
-               学习更多</a>
-              </p>
-          </div>
-      </div>
-        <section class="row">
-          <div id="mainCarousel" class="carousel slide col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-8 col-sm-8 col-md-8 col-lg-8" >
-            <!-- 轮播indicator -->
-            <ol class="carousel-indicators">
-                <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#mainCarousel" data-slide-to="1"></li>
-                <li data-target="#mainCarousel" data-slide-to="2"></li>
-            </ol>
-            <!-- 轮播content -->
-            <div class="carousel-inner">
-                <div class="item active">
-                  <a href="gameSrc/OffMountain.zip" title="点击下载《下山》">
-                    <img src="img/下山2.png" alt="First slide">
-                  </a>
-                    <div class="carousel-caption" style="font-size: large;">下山</div>
-                </div>
-                <div class="item">
-                  <a href="gameSrc/Dungeon.zip" title="点击下载《Dungeon》">
-                    <img src="img/Dungeon.png" alt="Second slide">
-                  </a>
-                   <div class="carousel-caption" style="font-size: large;">Dungeon</div>
-                </div>
-                <div class="item">
-                  <a href="gameSrc/SunnyLand.zip" title="点击下载《SunnyLand》">
-                    <img src="img/SunnyLand.png" alt="Third slide">
-                  </a>
-                   <div class="carousel-caption" style="font-size: large;">SunnyLand</div>
-                </div>
-            </div>
-            <!-- 轮播Nav -->
-            <a class="left carousel-control" href="#mainCarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#mainCarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <!-- 可切换侧边栏 -->
-          <aside class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="asideInfo">
-            <button id="btn">三</button>
-             <!-- 头像不能溢出侧边栏 -->
-             <img src="img/头像.jpg" alt="avator" style="max-width: 80%;margin: 5%;">
-            <div id="personalInfo" style="display: flex;flex-flow: column;">
-              <dl>
-                <!-- bootstrap标签 -->
-                <dt>姓名：<span class="label-info"> Drasil</span></dt>
-                <dt>生日：<span class="label-info">2000.7.6</span></dt>
-                <dt>
-                  <i class="fa fa-wechat"></i><span class="label-info">mason_Ji0706</span>
-                </dt>
-                <dt>
-                  <i class="fa fa-qq"></i><span class="label-info">1016365768</span>
-                </dt>
-                <dt>
-                  <a target="_blank" href="https://github.com/DrasilJi">
-                    <i class="fa fa-github"></i>Github
-                  </a>
-                </dt>
-              </dl>
-              
-            </div>
-            
-
-          </aside>
-        </section>
-      </header>
-      <!-- 首页轮播 -->
-      <main class="container" style="text-align: center;">
-        <h2>学习笔记</h2>
-        <div class="row">
-          <div class="col-sm-6 col-md-3">
-              <a href="#" class="thumbnail">
+    <!-- 侧边跟随导航栏 -->
+    <aside>
+        <div id="sideBar">
+            <ul>
+                <li><a href="#learn"><i class="fa fa-book fa-fw" aria-hidden="true"></i>学习笔记</a></li>
+                <li><a href="#game"><i class="fa fa-gamepad fa-fw" aria-hidden="true"></i>游戏Demo</a></li>
+                <li><a href="#Tool"><i class="fa fa-cog fa-spin fa-fw"></i></i>自制项目</a></li>
+            </ul>
+        </div>
+    </aside>
+    <!-- 轮播图 -->
+    <header>
+        <div class="banner" >
+            <div class="img-wrap">
+                <ul>
+                    <li class="item" style="display: block">
+                        <a href=""><img src="img/下山2.png" alt="" class="lunbo"></a>
+                    </li>
+                    <li class="item">
+                        <a href=""><img src="img/SunnyLand.png" alt="" class="lunbo"></a>
+                    </li>
+                    <li class="item">
+                        <a href=""><img src="img/Dungeon.png" alt=""class="lunbo"></a>
+                    </li>
+               </ul>
+           </div>
+           <div class="tab-btn">
+           <ul>
+               <li class="btn"></li>
+               <li class="btn"></li>
+               <li class="btn"></li>
+           </ul>
+           </div>
+       </div>
+    </header>
+    <main>
+        <h1 style="text-align: center;" id="learn">学习笔记</h1>
+        <div id="flexContainer">
+          <div class="subject">
+              <a href="#">
                   <img src="img/Csharp.jpg"
                        alt="C#图标">
               </a>
           </div>
-          <div class="col-sm-6 col-md-3">
-              <a href="#" class="thumbnail">
+          <div class="subject">
+              <a href="#">
                   <img src="img/unity.jpg"
                        alt="UnityShader">
               </a>
           </div>
-          <div class="col-sm-6 col-md-3">
-              <a href="bootstrap.html" class="thumbnail">
-                  <img src="img/bootstrap.png"
+          <div class="subject">
+              <a href="bootstrap.html">
+                  <img src="img/bootstrap.jpg"
                        alt="Bootstrap">
               </a>
           </div>
-          <div class="col-sm-6 col-md-3">
-              <a href="web.html" class="thumbnail">
+          <div class="subject">
+              <a href="web.html">
                   <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3333570781,1529734517&fm=26&gp=0.jpg"
                        alt="前端">
               </a>
           </div>
-      </div>
-      </main>
-    <footer class="container">
-      <h3>参考网址</h3>
-      <dl>
-        <dt>
-          <a href="https://developer.mozilla.org/zh-CN/">MDN文档</a>
-        </dt>
-      </dl>
-      <p><strong>此网站版权归Drasil所有</strong></p>
+        </div>
+        <h1 style="text-align: center;" id="game">游戏Demo</h1>
+        <div id="flexContainer">
+            <div class="subject" id="Offmountain">
+                <a href="">
+                    <img src="img/下山.png"
+                         alt="下山">
+                </a>
+            </div>
+            <div class="subject" id="SunnyLand">
+                <a href="">
+                    <img src="img/sunnylandTitle.png"
+                         alt="SunnyLand">
+                </a>
+            </div>
+            <div class="subject" id="Dungeon">
+                <a href="">
+                    <img src="img/dungeonTitle.png"
+                         alt="Dungeon">
+                </a>
+            </div>       
+          </div>
+          <h1 style="text-align: center;" id="Tool">自制项目</h1>
+            <div id="flexContainer">
+                <div class="subject">
+                    <a href="markdown实时预览.html">
+                        <img src="img/markdown.jpg"
+                         alt="Markdown实时预览">
+                    </a>
+                </div>
+                <div class="subject">
+                    <a href="game.html">
+                        <img src="img/俄罗斯方块.png"
+                         alt="俄罗斯方块">
+                    </a>
+                </div>      
+            </div>
+    </main>
+
+
+    <!-- 页尾 -->
+    <footer>
+        <div>
+            <div>
+                <p>参考网址</p>
+                <p><a href="https://developer.mozilla.org/zh-CN/" target="_blank" style="color: white;">MDN文档</a></p>
+            </div>
+            <div>
+                <p>ABOUT US</p>
+            </div>
+            <div>
+                <p>SUPPORT</p>
+                <p><strong>此网站版权归Drasil所有</strong></p>
+            </div>
+        </div>
     </footer>
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+   <!-- 轮播效果 -->
     <script type="text/javascript">
-    var isWhite=true;//当前背景是否为白色
-    // 左侧边栏
-      $(document).ready(function () {
-        var trigger = $('.hamburger'),
-          overlay = $('.overlay'),
-         isClosed = false;
-    
-        trigger.click(function () {
-          hamburger_cross();      
+        var index = 0;/*初始化一个变量 指向下彪*/
+        //点击点
+        $(".tab-btn .btn").click(function () {
+            index = $(this).index();//获取点击该元素下彪
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".item").eq(index).fadeIn().siblings().fadeOut();
         });
-    
-        function hamburger_cross() {
-    
-          if (isClosed == true) {          
-          overlay.hide();
-          trigger.removeClass('is-open');
-          trigger.addClass('is-closed');
-          isClosed = false;
-          } else {   
-          overlay.show();
-          trigger.removeClass('is-closed');
-          trigger.addClass('is-open');
-          isClosed = true;
-          }
-        }
-        
-        $('[data-toggle="offcanvas"]').click(function () {
-          $('#wrapper').toggleClass('toggled');
-        });  
-      });
-      //客户端数据检验
-      function clientCheck(){
-      var text = document.getElementById("mysearch").value;
-      if(text ==  null || text == ''){
-            alert("用户名不能为空");
-            return false;
-      }
-      return true;}
-      //切换主题
-      function changeTheme()
-      {
-        var bd = document.getElementById("mybody");
-        if(isWhite)
-        {
-          bd.style.backgroundColor = "#CCFFFF";
-          isWhite=false;
-        }
-        else
-        {
-          bd.style.backgroundColor = "#FFFFFF";
-          isWhite=true;
-        }
-      }
-      //定时器实现时钟
-      function nowTime(){
-              //获取当前时间，算出小时，分钟，秒。
-                var dateTime = new Date();
-                var hour = dateTime.getHours();
-                var min = dateTime.getMinutes();
-                var sec = dateTime.getSeconds();
-                //调用函数 补0
-                checkTime(min);
-                checkTime(sec);
-                document.getElementById('timeClock').innerHTML = checkTime(hour) + ':' + checkTime(min) + ':' + checkTime(sec);
-                setInterval('nowTime()',1000); 
-            }
-            //给小时，分钟，秒，不足10的数前面补一个0.
-            function checkTime(num){
-                if(num < 10){
-                  return '0' + num;
-                }
-                else if(num >= 10){
-                  return '' + num;
-                }  
-            }
-            nowTime();
-      //cookies
-      function setCookie(cname,cvalue,exdays){
-        console.log("setcookie");
-      var d = new Date();
-      d.setTime(d.getTime()+(exdays*24*60*60*1000));
-      var expires = "expires="+d.toGMTString();
-      document.cookie = cname+"="+cvalue+"; "+expires;
-      }
-      function getCookie(cname){
-        console.log("getcookie");
-          var name = cname + "=";
-          var ca = document.cookie.split(';');
-          for(var i=0; i<ca.length; i++) {
-              var c = ca[i].trim();
-              if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
-          }
-          return "";
-      }
-      function checkCookie(){
-          var user=getCookie("username");
-          if (user!=""){
-              // alert("欢迎 " + user + " 再次访问");
-              document.getElementById("welcomeHeader").innerHTML="欢迎"+user.toString()+"!";
-          }
-          else {
-            user=document.getElementById("setCookie").value;
-              // user = prompt("请输入你的名字:","");
-                if (user!="" && user!=null){
-                  setCookie("username",user,30);
-                  document.getElementById("welcomeHeader").innerHTML="欢迎"+user.toString()+"!";
-              }
-          }
-      }
+        var time2 = setInterval(function () {
+            index ++;
+            if (index >4){ index = 0;}
+            $(".item").eq(index).fadeIn().siblings().fadeOut();
+            $(".tab-btn .btn").eq(index).addClass("active").siblings().removeClass("active");
+
+        },4000); //定时器 重复
     </script>
-     
-  </body>
+</body>
 </html>

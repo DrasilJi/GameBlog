@@ -1,0 +1,24 @@
+{
+  "name": "GameBlog",
+  "homepage": "https://github.com/DrasilJi/GameBlog",
+  "authors": [
+    "Jsx <1016365768@qq.com>"
+  ],
+  "description": "web course work",
+  "main": "mainBower",
+  "keywords": [
+    "jishuxiang5768"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
