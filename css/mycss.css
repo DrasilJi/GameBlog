@@ -4,7 +4,7 @@
  nav { 
     font-family: helvetica; 
     position:relative; 
-    width:700px; 
+    width:750px; 
     height:56px; 
     font-size:14px; 
     color:#999; 
@@ -109,6 +109,9 @@ aside #sideBar a:active{
     background-color:#cc0000;
 }
  /* 轮播图 */
+ header{
+     display: flex;
+ }
  .banner{
     position: relative;/*相对定位 给绝对定位位置参考*/
     width: 100%;
@@ -181,7 +184,7 @@ main #flexContainer{
 main .subject{
     margin: 10px;
     /* flex-grow, flex-shrink 和 flex-basis */
-    flex: 1 1 20%
+    flex: 1 1 20%;
     
 }
 main .subject img{

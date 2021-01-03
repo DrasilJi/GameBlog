@@ -4,26 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarkDown实时预览</title>
+    <!-- normalize.css -->
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <!-- mycss-->
+    <link rel="stylesheet" href="css/mycss.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <script type="text/javascript" src="showdown/dist/showdown.min.js"></script>
+    <style>
+        main{
+            display: flex;
+            flex-flow: row nowrap;
+             /* 水平对齐 */
+            justify-content: space-around;
+            /* 竖直对齐 */
+            align-items: center;
+            padding: 10px;
+        }
+        main #oriContent{
+            margin: 10px;
+            /* flex-grow, flex-shrink 和 flex-basis */
+            flex: 1 1 20%;
+        }
+        main #transResult{
+            margin: 10px;
+            /* flex-grow, flex-shrink 和 flex-basis */
+            flex: 1 1 20%;
+        }
+        
+    </style>
 </head>
 <body>
-    <div>
+    <div id="navcont"></div>
+    <main>
         <!-- 设置id为oriContent，如果想实现实时更新，使用onkeyup方法 -->
-    
-        <textarea id="oriContent" style="height:400px;width:600px;" onkeyup="convert()"></textarea>
-    
-    <!-- 设置展示的div添加id -->
-        <div id="result"></div>
-    
-    </div>
-    
+        <textarea id="oriContent" placeholder="请在此输入Markdown代码..." style="height:400px;width:600px;" onkeyup="convert()"></textarea>
+        <!-- 设置展示的div添加id -->
+        <div id="transResult"></div>
+    </main>
+    <footer></footer>
+    <!-- 前端文件包含 -->
+    <script>
+        $.get("./tpl/head.tpl", function(result){      
+              $("#navcont").html(result);
+        });
+        $.get("./tpl/footer.tpl", function(result){      
+              $("footer").html(result);
+        });
+      </script>
     <!-- 写转化函数 -->
     <script type="text/javascript">
     function convert(){
         var text = document.getElementById("oriContent").value;
         var converter = new showdown.Converter();
         var html = converter.makeHtml(text);
-        document.getElementById("result").innerHTML = html;
+        document.getElementById("transResult").innerHTML = html;
     }
     </script>
 </body>
