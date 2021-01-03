@@ -28,6 +28,7 @@ var isOver = false;
 var shapes = ("0,1,1,1,2,1,3,1;1,0,1,1,1,2,2,2;2,0,2,1,2,2,1,2;0,1,1,1,1,2,2,2;1,2,2,2,2,1,3,1;1,1,2,1,1,2,2,2;0,2,1,2,1,1,2,2").split(";");
 var tetris;
 var container;
+var saveData;
 function createElm(tag,css)
 {
  var elm = document.createElement(tag);
@@ -44,6 +45,11 @@ function Tetris(css,x,y,shape)
  {
    //预告生成
   this.divs2 = [createElm("div",myCss),createElm("div",myCss),createElm("div",myCss),createElm("div",myCss)];
+  //maxscore生成
+  this.maxscore=createElm("div","g");
+  this.maxscore.style.top = 150+10*size+"px";
+  this.maxscore.style.left = 600+(col- -1)*size+"px";
+  this.maxscore.innerHTML = "maxscore:0";
   //score生成
   this.score = createElm("div","g");
   this.score.style.top = 200+10*size+"px";
@@ -65,6 +71,15 @@ function Tetris(css,x,y,shape)
   this.shape2 = shapes[Math.floor((Math.random()*shapes.length-0.000000001))].split(",");
   if(this.container && !this.container.check(this.x,this.y,this.shape))
   {
+    //客户端存储
+    // 比较分数决定是否保存
+    if(this.container.score>this.container.maxscore)
+    {
+      saveData={
+        val:this.container.score
+      };
+      localStorage.setItem('maxScore', JSON.stringify(saveData));
+    }
    isOver = true;
    alert("游戏结束");
   }
@@ -100,6 +115,7 @@ function Tetris(css,x,y,shape)
   {
    this.score.innerHTML = "score:" + this.container.score;
   }
+  
  }
  // 水平移动方块的位置
  this.hMove = function(step)
@@ -152,6 +168,18 @@ function Container()
   bgDiv.style.height = size*row+"px";
   // 清空积分
   this.score = 0;
+  //客户端读取
+  //读取最高分
+  this.maxData = localStorage['maxScore'];
+  if(this.maxData!=null)
+  {
+    this.maxscore=JSON.parse(this.maxData).val;
+  }
+  else
+  {
+    this.maxscore=0;
+  }
+  
  }
  this.check = function(x,y,shape)
  {
@@ -240,6 +268,10 @@ function init()
  container.init();
  tetris = new Tetris();
  tetris.container = container;
+ if(tetris.container && tetris.maxscore)
+  {
+    tetris.maxscore.innerHTML="maxscore:"+tetris.container.maxscore;
+  }
  document.onkeydown = function(e)
  {
   if(isOver) return;
