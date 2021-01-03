@@ -110,7 +110,8 @@ aside #sideBar a:active{
 }
  /* 轮播图 */
  header{
-     display: flex;
+     position: relative;
+     
  }
  .banner{
     position: relative;/*相对定位 给绝对定位位置参考*/
