@@ -26,6 +26,7 @@
      text-align:center; 
      color:#999;
     }
+    /* 伪类 */
  nav ul li a:hover {
      background: black  repeat-x;; 
      color:#fff;
